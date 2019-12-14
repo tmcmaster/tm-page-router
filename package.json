@@ -1,11 +1,11 @@
 {
-    "name": "@wonkytech/template-web-component",
+    "name": "@wonkytech/tm-page-router",
     "version": "0.0.3",
     "description": "This is a template for creating new web component repositories.",
     "author": "Tim McMaster",
-    "homepage": "https://tmcmaster.github.io/template-web-component",
+    "homepage": "https://tmcmaster.github.io/tm-page-router",
     "license": "MIT",
-    "repository": "https://github.com/tmcmaster/template-web-component",
+    "repository": "https://github.com/tmcmaster/tm-page-router",
     "pika": true,
     "sideEffects": true,
     "@pika/pack": {
@@ -35,8 +35,11 @@
         "docs:open": "http-server --open docs"
     },
     "dependencies": {
+        "@wonkytech/polymer-elements": "0.0.16",
+        "@wonkytech/vaadin-elements": "0.0.31",
         "lit-element": "^2.0.1",
-        "lit-html": "^1.0.0"
+        "lit-html": "^1.0.0",
+        "navigo": "^7.1.2"
     },
     "devDependencies": {
         "@pika/pack": "^0.5.0",
