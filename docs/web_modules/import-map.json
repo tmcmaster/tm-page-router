@@ -5,7 +5,6 @@
     "@wonkytech/vaadin-elements": "./@wonkytech/vaadin-elements.js",
     "lit-element": "./lit-element.js",
     "lit-html": "./lit-html.js",
-    "navigo": "./navigo.js",
     "@wonkytech/tm-examples": "./@wonkytech/tm-examples.js"
   }
 }

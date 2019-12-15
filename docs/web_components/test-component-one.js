@@ -1,5 +1,5 @@
-import {html, } from 'lit-html';
-import {LitElement} from 'lit-element';
+import {html, } from '../web_modules/lit-html.js';
+import {LitElement} from '../web_modules/lit-element.js';
 
 window.customElements.define('test-component-one', class extends LitElement {
 
@@ -12,7 +12,7 @@ window.customElements.define('test-component-one', class extends LitElement {
 
     constructor() {
         super();
-        this.heading = 'Hello World! from the test-component-one web component';
+        this.heading = 'This component was created and loaded into the DOM, when this tab was first selected.';
     }
 
     // noinspection JSUnusedGlobalSymbols
@@ -26,7 +26,7 @@ window.customElements.define('test-component-one', class extends LitElement {
             color: gray;
         }
       </style>
-      <h2>${this.heading}</h2>
+      <h4>${this.heading}</h4>
     `;
     }
 

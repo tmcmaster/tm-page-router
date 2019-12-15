@@ -12,13 +12,12 @@ let sites = {
 render(html`
     <style>
         body {
-          background-color: lightgray;
           padding: 0;
           margin: 0;
         } 
     </style>
     <tm-examples heading="Polymer Elements" .sites="${sites}">
-        <section title="paper-button">
+        <section title="Static Pages">
             <tm-page-router>
                 <article slot="page" title="One">
                     <h3>Page One</h3>
@@ -29,10 +28,17 @@ render(html`
                 <article slot="page" title="Three">
                     <h3>Page Three</h3>
                 </article>
-                <article slot="page" title="Four" component="test-component-one"></article>
-                <article slot="page" title="Five">
+                <article slot="page" title="Paper Input">
                     <paper-input label="Test Label" value="Test Value"></paper-input>
                 </article>
+             </tm-page-router>
+        </section>
+        <section title="Lazy Load Pages">
+            <tm-page-router>
+                <article slot="page" title="Static">
+                    <h3>Static Page</h3>
+                </article>
+                <article slot="page" title="Lazy Load" component="test-component-one"></article>
              </tm-page-router>
         </section>
     </tm-examples>
