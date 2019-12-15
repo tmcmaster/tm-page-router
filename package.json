@@ -35,11 +35,10 @@
         "docs:open": "http-server --open docs"
     },
     "dependencies": {
-        "@wonkytech/polymer-elements": "0.0.16",
-        "@wonkytech/vaadin-elements": "0.0.31",
+        "@wonkytech/polymer-elements": "~0.0.17",
+        "@wonkytech/vaadin-elements": "~0.0.33",
         "lit-element": "^2.0.1",
-        "lit-html": "^1.0.0",
-        "navigo": "^7.1.2"
+        "lit-html": "^1.0.0"
     },
     "devDependencies": {
         "@pika/pack": "^0.5.0",

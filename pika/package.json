@@ -1,14 +1,15 @@
 {
     "scripts": {
-        "web": "npx @pika/web --dest ../docs/web_modules",
-        "build": "npm install && npm run web"
+        "pika:clean": "rm -rf node_modules/@wonkytech/*/node_modules",
+        "pika:build": "npx @pika/web --dest ../docs/web_modules",
+        "build": "npm update && npm run pika:clean && npm run pika:build"
     },
     "dependencies": {
-        "@wonkytech/tm-page-router": "latest",
-        "@wonkytech/polymer-elements": "0.0.16",
-        "@wonkytech/vaadin-elements": "0.0.31",
+        "@wonkytech/polymer-elements": "~0.0.17",
+        "@wonkytech/tm-page-router": "^0.0.6",
+        "@wonkytech/vaadin-elements": "~0.0.33",
         "lit-element": "^2.0.1",
         "lit-html": "^1.0.0",
-        "navigo": "^7.1.2"
+        "@wonkytech/tm-examples": "~0.0.29"
     }
 }
