@@ -1,10 +1,14 @@
 {
     "scripts": {
-        "sites": "cp sites.json ../docs",
         "web": "npx @pika/web --dest ../docs/web_modules",
-        "build": "npm install && npm run web && npm run sites"
+        "build": "npm install && npm run web"
     },
     "dependencies": {
-        "@wonkytech/tm-page-router": "latest"
+        "@wonkytech/tm-page-router": "latest",
+        "@wonkytech/polymer-elements": "0.0.16",
+        "@wonkytech/vaadin-elements": "0.0.31",
+        "lit-element": "^2.0.1",
+        "lit-html": "^1.0.0",
+        "navigo": "^7.1.2"
     }
 }

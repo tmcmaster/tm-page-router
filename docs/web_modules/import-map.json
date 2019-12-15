@@ -1,0 +1,10 @@
+{
+  "imports": {
+    "@wonkytech/tm-page-router": "./@wonkytech/tm-page-router.js",
+    "@wonkytech/polymer-elements": "./@wonkytech/polymer-elements.js",
+    "@wonkytech/vaadin-elements": "./@wonkytech/vaadin-elements.js",
+    "lit-element": "./lit-element.js",
+    "lit-html": "./lit-html.js",
+    "navigo": "./navigo.js"
+  }
+}
