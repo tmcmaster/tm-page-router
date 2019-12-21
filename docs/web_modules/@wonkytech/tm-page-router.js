@@ -57,6 +57,10 @@ window.customElements.define('tm-page-router', class extends LitElement {
     }
 
     page.classList.remove('hidden');
+
+    if (page.notifyResize !== undefined) {
+      page.notifyResize();
+    }
   } // TODO: need to review using templates
   //
   //     <template slot="page" title="Five" reload>
@@ -83,8 +87,6 @@ window.customElements.define('tm-page-router', class extends LitElement {
             :host {
                 display: flex;
                 flex-direction: column;
-                box-sizing: border-box;
-                //border: solid red 2px;
                 color: black;
                 width: 100%;
                 height: 100%;
@@ -92,11 +94,12 @@ window.customElements.define('tm-page-router', class extends LitElement {
             nav {
                 color: gray;
                 flex-shrink: initial;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
             }
             main {
                 color: darkgray;
-                box-sizing: border-box;
-                //border: solid blue 2px;
                 flex: auto;
             }
             

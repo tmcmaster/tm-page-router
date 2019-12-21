@@ -14,7 +14,7 @@ render(html`
           margin: 0;
         } 
     </style>
-    <tm-examples heading="Polymer Elements" .sites="${sites}">
+    <tm-examples heading="Page Router" .sites="${sites}">
         <section title="Static Pages">
             <tm-page-router>
                 <article slot="page" title="One">
