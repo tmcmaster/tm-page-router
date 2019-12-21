@@ -1,6 +1,6 @@
-import {html, css, LitElement} from 'lit-element';
+import {html} from 'lit-html';
+import {LitElement, css} from 'lit-element';
 
-import '@wonkytech/polymer-elements';
 import '@wonkytech/vaadin-elements';
 
 window.customElements.define('tm-page-router', class extends LitElement {
@@ -56,6 +56,9 @@ window.customElements.define('tm-page-router', class extends LitElement {
             page.removeAttribute('component');
         }
         page.classList.remove('hidden');
+        if (page.notifyResize !== undefined) {
+            page.notifyResize();
+        }
     }
 
     // TODO: need to review using templates

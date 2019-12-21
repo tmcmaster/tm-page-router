@@ -5,11 +5,11 @@
         "build": "npm update && npm run pika:clean && npm run pika:build"
     },
     "dependencies": {
-        "@wonkytech/polymer-elements": "~0.0.17",
-        "@wonkytech/tm-page-router": "^0.0.7",
-        "@wonkytech/vaadin-elements": "~0.0.33",
+        "@wonkytech/polymer-elements": "~0.0",
+        "@wonkytech/tm-page-router": "~0.0",
+        "@wonkytech/vaadin-elements": "~0.0",
         "lit-element": "^2.0.1",
         "lit-html": "^1.0.0",
-        "@wonkytech/tm-examples": "~0.1.1"
+        "@wonkytech/tm-examples": "~0.1"
     }
 }

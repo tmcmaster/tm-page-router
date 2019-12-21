@@ -1,7 +1,5 @@
 import {html, render} from "./web_modules/lit-html.js";
 
-import './web_components/test-component-one.js';
-
 let sites = {
     'src': 'https://github.com/tmcmaster/tm-page-router',
     'pika': 'https://www.pika.dev/npm/@wonkytech/tm-page-router',
