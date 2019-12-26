@@ -1,2 +1,2 @@
-import '../src/index.js';
+import '../src/tm-page-router.js';
 import '../docs/main.js';

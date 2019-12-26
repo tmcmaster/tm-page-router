@@ -1,6 +1,7 @@
 {
   "imports": {
     "@wonkytech/polymer-elements": "./@wonkytech/polymer-elements.js",
+    "@wonkytech/material-elements": "./@wonkytech/material-elements.js",
     "@wonkytech/tm-examples": "./@wonkytech/tm-examples.js",
     "@wonkytech/tm-page-router": "./@wonkytech/tm-page-router.js",
     "@wonkytech/vaadin-elements": "./@wonkytech/vaadin-elements.js",

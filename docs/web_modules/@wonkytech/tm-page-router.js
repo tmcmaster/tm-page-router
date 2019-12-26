@@ -1,6 +1,6 @@
 import '../common/disable-upgrade-mixin-ae41579f.js';
 import './polymer-elements.js';
-import { h as html } from '../common/lit-html-9957b87e.js';
+import { h as html } from '../common/lit-html-acd9a6eb.js';
 import { LitElement, css } from '../lit-element.js';
 import './vaadin-elements.js';
 

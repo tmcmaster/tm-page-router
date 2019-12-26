@@ -4,6 +4,7 @@
     },
     "dependencies": {
         "@wonkytech/polymer-elements": "~0.0",
+        "@wonkytech/material-elements": "~0.0",
         "@wonkytech/tm-examples": "~0.1",
         "@wonkytech/tm-page-router": "~0.1",
         "@wonkytech/vaadin-elements": "~0.1",
