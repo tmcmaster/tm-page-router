@@ -16,8 +16,8 @@ render(html`
           margin: 0;
         } 
     </style>
-    <tm-examples heading="Page Router" .sites="${sites}" debug>
-        <section title="Auto Size" class="auto" debug>
+    <tm-examples heading="Page Router" .sites="${sites}">
+        <section title="Auto Size" class="auto">
             <style>
                 .auto div.main {
                     box-sizing: border-box;
@@ -68,7 +68,7 @@ render(html`
                  </tm-page-router>            
             </div>
         </section>
-        <section title="Fixed Size" class="fixed" debug>
+        <section title="Fixed Size" class="fixed">
             <style>
                 .fixed tm-page-router {
                     width: 100%;
