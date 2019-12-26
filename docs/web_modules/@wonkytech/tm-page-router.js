@@ -1,7 +1,7 @@
-import '../common/disable-upgrade-mixin-ae41579f.js';
-import './polymer-elements.js';
 import { h as html } from '../common/lit-html-acd9a6eb.js';
 import { LitElement, css } from '../lit-element.js';
+import '../common/disable-upgrade-mixin-ae41579f.js';
+import './polymer-elements.js';
 import './vaadin-elements.js';
 
 window.customElements.define('tm-page-router', class extends LitElement {
@@ -25,8 +25,10 @@ window.customElements.define('tm-page-router', class extends LitElement {
     this.pages = Array.from(main.assignedNodes());
     this.tabs = tabs;
     this.pages.forEach((node, index) => {
+      node._display = node.style.display;
+
       if (index > 0) {
-        node.classList.add('hidden');
+        node.style.display = 'none'; //node.classList.add('hidden');
       }
 
       const menuItem = document.createElement('vaadin-tab');
@@ -43,7 +45,8 @@ window.customElements.define('tm-page-router', class extends LitElement {
       if (index === pageIndex) {
         this._selectGivenPage(page);
       } else {
-        page.classList.add('hidden');
+        //page.classList.add('hidden');
+        page.style.display = 'none';
       }
     });
   }
@@ -51,34 +54,17 @@ window.customElements.define('tm-page-router', class extends LitElement {
   _selectGivenPage(page) {
     const component = page.getAttribute('component');
 
-    if (component !== undefined) {
+    if (component !== undefined && component !== null) {
       page.appendChild(document.createElement(component));
       page.removeAttribute('component');
     }
 
-    page.classList.remove('hidden');
+    page.style.display = page._display; //page.classList.remove('hidden');
 
     if (page.notifyResize !== undefined) {
       page.notifyResize();
     }
-  } // TODO: need to review using templates
-  //
-  //     <template slot="page" title="Five" reload>
-  //         <paper-input label="Test Label" value="This is a test"></paper-input>
-  //     </template>
-  //
-  // _selectGivenTemplate(page, index) {
-  //     console.log('Page: ', page.tagName);
-  //     if (page.tagName === 'TEMPLATE' && !page.getAttribute('loaded')) {
-  //         if (!page.getAttribute('loaded') || page.getAttribute('reload'))
-  //             console.log('Applying template');
-  //         let clone = document.importNode(page.content, true);
-  //         const body = this.shadowRoot.getElementById('body');
-  //         body.appendChild(clone);
-  //         page.setAttribute('loaded', true);
-  //     }
-  //     page.classList.remove('hidden');
-  // }
+  } // noinspection JSUnusedGlobalSymbols
 
 
   static get styles() {
@@ -87,20 +73,16 @@ window.customElements.define('tm-page-router', class extends LitElement {
             :host {
                 display: flex;
                 flex-direction: column;
-                color: black;
-                width: 100%;
-                height: 100%;
             }
             nav {
-                color: gray;
                 flex-shrink: initial;
                 display: flex;
                 flex-direction: row;
                 justify-content: center;
             }
             main {
-                color: darkgray;
                 flex: auto;
+                overflow: scroll;
             }
             
             ::slotted(.hidden) {

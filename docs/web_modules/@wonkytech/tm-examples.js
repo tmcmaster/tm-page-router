@@ -1,8 +1,8 @@
-import '../common/disable-upgrade-mixin-ae41579f.js';
-import './polymer-elements.js';
 import './material-elements.js';
 import { h as html } from '../common/lit-html-acd9a6eb.js';
 import { LitElement, css } from '../lit-element.js';
+import '../common/disable-upgrade-mixin-ae41579f.js';
+import './polymer-elements.js';
 import './vaadin-elements.js';
 
 window.customElements.define('tm-sites', class extends LitElement {
@@ -463,7 +463,7 @@ window.customElements.define('tm-examples', class extends LitElement {
                             </tm-sites>
                         `}
                     </div>
-                    <hr/>     
+                    <hr/>                
                     <nav>
                         <vaadin-tabs id="tabs"></vaadin-tabs>
                     </nav>
