@@ -71,20 +71,30 @@ window.customElements.define('tm-page-router', class extends LitElement {
     // language=CSS
     return css`
             :host {
+                
+            }
+
+            article {
                 display: flex;
                 flex-direction: column;
+                justify-content: space-between;
+                height: 100%;
+                width: 100%;
             }
+
             nav {
+                flex: min-content;
                 flex-shrink: initial;
                 display: flex;
                 flex-direction: row;
                 justify-content: center;
             }
+
             main {
                 flex: auto;
                 overflow: scroll;
             }
-            
+
             ::slotted(.hidden) {
                 display: none;
             }
@@ -94,12 +104,14 @@ window.customElements.define('tm-page-router', class extends LitElement {
 
   render() {
     return html`
-            <nav id="nav">
-                <vaadin-tabs id="tabs"></vaadin-tabs>
-            </nav>
-            <main>
-                <slot id="main" name="page"></slot>
-            </main>
+            <article>
+                <nav id="nav">
+                    <vaadin-tabs id="tabs"></vaadin-tabs>
+                </nav>
+                <main>
+                    <slot id="main" name="page"></slot>
+                </main>
+            </article>
         `;
   }
 
