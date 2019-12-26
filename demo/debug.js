@@ -1,5 +1,7 @@
 import {html, render} from "../docs/web_modules/lit-html.js";
 
+import '../src/tm-page-router.js';
+
 import '../docs/web_modules/@wonkytech/tm-examples.js';
 
 let sites = {
@@ -28,6 +30,12 @@ render(html`
                     /*border: solid blue 1px;*/
                     background: yellow;
                 }
+                
+                .auto article div {
+                    box-sizing: border-box;
+                    border: solid green 1px;
+                }
+                
                 .auto .small {
                 }
                 .auto .wide {
@@ -86,7 +94,10 @@ render(html`
                     /*border: solid blue 1px;*/
                     background: yellow;
                 }
-                
+                .fixed article div {
+                    box-sizing: border-box;
+                    border: solid green 1px;
+                }
                 article {
                     display: inline-block;
                 }

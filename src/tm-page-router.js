@@ -26,7 +26,7 @@ window.customElements.define('tm-page-router', class extends LitElement {
         this.pages = Array.from(main.assignedNodes());
         this.tabs = tabs;
 
-        this.pages.forEach((node,index) => {
+        this.pages.forEach((node, index) => {
             node._display = node.style.display;
             if (index > 0) {
                 node.style.display = 'none';
@@ -66,37 +66,49 @@ window.customElements.define('tm-page-router', class extends LitElement {
     // noinspection JSUnusedGlobalSymbols
     static get styles() {
         // language=CSS
-        return css `
+        return css`
             :host {
+                
+            }
+
+            article {
                 display: flex;
                 flex-direction: column;
+                justify-content: space-between;
+                height: 100%;
+                width: 100%;
             }
+
             nav {
+                flex: min-content;
                 flex-shrink: initial;
                 display: flex;
                 flex-direction: row;
                 justify-content: center;
             }
+
             main {
                 flex: auto;
                 overflow: scroll;
             }
-            
+
             ::slotted(.hidden) {
                 display: none;
             }
         `;
-    }
+    } // noinspection JSUnusedGlobalSymbols
 
-    // noinspection JSUnusedGlobalSymbols
+
     render() {
         return html`
-            <nav id="nav">
-                <vaadin-tabs id="tabs"></vaadin-tabs>
-            </nav>
-            <main>
-                <slot id="main" name="page"></slot>
-            </main>
+            <article>
+                <nav id="nav">
+                    <vaadin-tabs id="tabs"></vaadin-tabs>
+                </nav>
+                <main>
+                    <slot id="main" name="page"></slot>
+                </main>
+            </article>
         `;
     }
 });
