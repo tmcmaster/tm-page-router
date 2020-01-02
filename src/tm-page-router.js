@@ -80,6 +80,7 @@ window.customElements.define('tm-page-router', class extends LitElement {
             }
 
             nav {
+                width: 100%;
                 flex: min-content;
                 flex-shrink: initial;
                 display: flex;
@@ -91,7 +92,11 @@ window.customElements.define('tm-page-router', class extends LitElement {
                 flex: auto;
                 overflow: scroll;
             }
-
+            
+            vaadin-tabs {
+                width: 100%;
+            }
+            
             ::slotted(.hidden) {
                 display: none;
             }

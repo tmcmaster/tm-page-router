@@ -48,6 +48,25 @@ render(html`
                 </article>
              </tm-page-router>
         </section>
+        <section title="Narrow">
+            <style>
+                input {
+                    border: solid lightgrey 1px;
+                }
+                tm-page-router.narrow {
+                    width: 400px;
+                    box-sizing: border-box;
+                    border: solid lightgray 3px;
+                }
+            </style>
+            <tm-page-router class="narrow">
+                ${Array(10).fill(0).map((v,i) => html`
+                     <article slot="page" title="Page ${i+1}">
+                        <h3>Page ${i+1}</h3>
+                     </article>
+                `)}
+             </tm-page-router>
+        </section>
     </tm-examples>
 
 `, document.querySelector('body'));
