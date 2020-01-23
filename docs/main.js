@@ -67,6 +67,26 @@ render(html`
                 `)}
              </tm-page-router>
         </section>
+        <section title="No Tabs">
+            <style>
+                aside {
+                   width: 100px;
+                }
+                
+            </style>
+            <aside>
+                ${Array(3).fill(0).map((v,i) => html`
+                    <mwc-button @click="${(e) => document.getElementById('router').selectPage(i)}">Page ${i+1}</mwc-button>
+                `)}
+            </aside>
+            <tm-page-router id="router" noTabs>
+                ${Array(3).fill(0).map((v,i) => html`
+                     <article slot="page" title="Page ${i+1}">
+                        <h3>Page ${i+1}</h3>
+                     </article>
+                `)}
+             </tm-page-router>
+        </section>
     </tm-examples>
 
 `, document.querySelector('body'));
