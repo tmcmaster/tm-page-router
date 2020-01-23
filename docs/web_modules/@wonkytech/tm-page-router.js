@@ -7,23 +7,35 @@ import './vaadin-elements.js';
 window.customElements.define('tm-page-router', class extends LitElement {
   // noinspection JSUnusedGlobalSymbols
   static get properties() {
-    return {};
+    return {
+      noTabs: {
+        type: Boolean
+      }
+    };
   }
 
   constructor() {
     super();
+    this.noTabs = false;
   } // noinspection JSUnusedGlobalSymbols
 
 
   firstUpdated(_changedProperties) {
     super.firstUpdated(_changedProperties);
+    const {
+      noTabs
+    } = this;
+
+    if (!noTabs) {
+      const tabs = this.shadowRoot.getElementById('tabs');
+      this.tabs = tabs;
+      tabs.addEventListener('selected-changed', () => {
+        this.selectPage(tabs.selected);
+      });
+    }
+
     const main = this.shadowRoot.getElementById('main');
-    const tabs = this.shadowRoot.getElementById('tabs');
-    tabs.addEventListener('selected-changed', () => {
-      this._selectPage(tabs.selected);
-    });
     this.pages = Array.from(main.assignedNodes());
-    this.tabs = tabs;
     this.pages.forEach((node, index) => {
       node._display = node.style.display;
 
@@ -31,13 +43,15 @@ window.customElements.define('tm-page-router', class extends LitElement {
         node.style.display = 'none'; //node.classList.add('hidden');
       }
 
-      const menuItem = document.createElement('vaadin-tab');
-      menuItem.appendChild(document.createTextNode(node.title));
-      tabs.appendChild(menuItem);
+      if (!noTabs) {
+        const menuItem = document.createElement('vaadin-tab');
+        menuItem.appendChild(document.createTextNode(node.title));
+        this.tabs.appendChild(menuItem);
+      }
     });
   }
 
-  _selectPage(pageIndex) {
+  selectPage(pageIndex) {
     const {
       pages
     } = this;
@@ -83,6 +97,7 @@ window.customElements.define('tm-page-router', class extends LitElement {
             }
 
             nav {
+                width: 100%;
                 flex: min-content;
                 flex-shrink: initial;
                 display: flex;
@@ -94,7 +109,11 @@ window.customElements.define('tm-page-router', class extends LitElement {
                 flex: auto;
                 overflow: scroll;
             }
-
+            
+            vaadin-tabs {
+                width: 100%;
+            }
+            
             ::slotted(.hidden) {
                 display: none;
             }
@@ -103,11 +122,16 @@ window.customElements.define('tm-page-router', class extends LitElement {
 
 
   render() {
+    const {
+      noTabs
+    } = this;
     return html`
             <article>
-                <nav id="nav">
-                    <vaadin-tabs id="tabs"></vaadin-tabs>
-                </nav>
+                ${noTabs ? html`` : html`
+                    <nav id="nav">
+                        <vaadin-tabs id="tabs"></vaadin-tabs>
+                    </nav>
+                `}
                 <main>
                     <slot id="main" name="page"></slot>
                 </main>
