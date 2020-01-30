@@ -2,7 +2,6 @@ import {html} from 'lit-html';
 import {LitElement, css} from 'lit-element';
 
 window.customElements.define('tm-page-router', class extends LitElement {
-
     // noinspection JSUnusedGlobalSymbols
     static get properties() {
         return {
@@ -15,7 +14,7 @@ window.customElements.define('tm-page-router', class extends LitElement {
         this.noTabs = false;
     }
 
-    // noinspection JSUnusedGlobalSymbols
+
     firstUpdated(_changedProperties) {
         super.firstUpdated(_changedProperties);
 
@@ -29,19 +28,34 @@ window.customElements.define('tm-page-router', class extends LitElement {
             });
         }
 
+        this._rebuildTabs();
+
+    }
+
+    _rebuildTabs() {
+
+        const {noTabs} = this;
+
+        if (!noTabs) {
+            while (this.tabs.hasChildNodes()) {
+                this.tabs.removeChild(this.tabs.firstChild);
+            }
+        }
+
         const main = this.shadowRoot.getElementById('main');
         this.pages = Array.from(main.assignedNodes());
-
         this.pages.forEach((node, index) => {
-            node._display = node.style.display;
+            if (node._display === undefined) {
+                node._display = node.style.display;
+            }
+
             if (index > 0) {
-                node.style.display = 'none';
-                //node.classList.add('hidden');
+                node.style.display = 'none'; //node.classList.add('hidden');
             }
             if (!noTabs) {
                 const menuItem = document.createElement('vaadin-tab');
                 menuItem.appendChild(document.createTextNode(node.title));
-                this.tabs.appendChild(menuItem)
+                this.tabs.appendChild(menuItem);
             }
         });
     }
@@ -65,13 +79,21 @@ window.customElements.define('tm-page-router', class extends LitElement {
             page.removeAttribute('component');
         }
         page.style.display = page._display;
-        //page.classList.remove('hidden');
         if (page.notifyResize !== undefined) {
             page.notifyResize();
         }
     }
 
-    // noinspection JSUnusedGlobalSymbols
+    _pagesChanged(e) {
+        console.log('TM-PAGE-ROUTER - pagesChanged', e);
+        if (this.tabs) {
+            const selectedTab = this.tabs.selected;
+            this._rebuildTabs();
+            this.tabs.selected = selectedTab;
+            this.selectPage(selectedTab);
+        }
+    }
+
     static get styles() {
         // language=CSS
         return css`
@@ -117,15 +139,16 @@ window.customElements.define('tm-page-router', class extends LitElement {
 
         return html`
             <article>
-                ${(noTabs ? html`` : html`
+                ${noTabs ? html`` : html`
                     <nav id="nav">
                         <vaadin-tabs id="tabs"></vaadin-tabs>
                     </nav>
-                `)}
+                `}
                 <main>
-                    <slot id="main" name="page"></slot>
+                    <slot id="main" name="page" @slotchange=${(e) => this._pagesChanged(e)}></slot>
                 </main>
             </article>
         `;
     }
+
 });
